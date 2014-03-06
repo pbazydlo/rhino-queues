@@ -54,31 +54,31 @@ namespace Rhino.Queues.Storage
 			columnsInformation = new ColumnsInformation();
 			instance.WithDatabase(database, (session, dbid) =>
 			{
-				using (var table = new Table(session, dbid, "subqueues", OpenTableGrbit.ReadOnly))
+				using (var table = new Table(session, dbid, "subqueues", OpenTableGrbit.None))
 				{
 					columnsInformation.SubqueuesColumns = Api.GetColumnDictionary(session, table);
 				}
-				using (var table = new Table(session, dbid, "outgoing_history", OpenTableGrbit.ReadOnly))
+				using (var table = new Table(session, dbid, "outgoing_history", OpenTableGrbit.None))
 				{
 					columnsInformation.OutgoingHistoryColumns = Api.GetColumnDictionary(session, table);
 				}
-				using (var table = new Table(session, dbid, "outgoing", OpenTableGrbit.ReadOnly))
+				using (var table = new Table(session, dbid, "outgoing", OpenTableGrbit.None))
 				{
 					columnsInformation.OutgoingColumns = Api.GetColumnDictionary(session, table);
 				}
-				using (var table = new Table(session, dbid, "recovery", OpenTableGrbit.ReadOnly))
+				using (var table = new Table(session, dbid, "recovery", OpenTableGrbit.None))
 				{
 					columnsInformation.RecoveryColumns = Api.GetColumnDictionary(session, table);
 				}
-				using (var table = new Table(session, dbid, "transactions", OpenTableGrbit.ReadOnly))
+				using (var table = new Table(session, dbid, "transactions", OpenTableGrbit.None))
 				{
 					columnsInformation.TxsColumns = Api.GetColumnDictionary(session, table);
 				}
-				using (var table = new Table(session, dbid, "queues", OpenTableGrbit.ReadOnly))
+				using (var table = new Table(session, dbid, "queues", OpenTableGrbit.None))
 				{
 					columnsInformation.QueuesColumns = Api.GetColumnDictionary(session, table);
 				}
-				using (var table = new Table(session, dbid, "recveived_msgs", OpenTableGrbit.ReadOnly))
+				using (var table = new Table(session, dbid, "recveived_msgs", OpenTableGrbit.None))
 				{
 					columnsInformation.RecveivedMsgsColumns = Api.GetColumnDictionary(session, table);
 				}
@@ -106,7 +106,7 @@ namespace Rhino.Queues.Storage
 			{
 				instance.WithDatabase(database, (session, dbid) =>
 				{
-					using (var details = new Table(session, dbid, "details", OpenTableGrbit.ReadOnly))
+					using (var details = new Table(session, dbid, "details", OpenTableGrbit.None))
 					{
 						Api.JetMove(session, details, JET_Move.First, MoveGrbit.None);
 						var columnids = Api.GetColumnDictionary(session, details);
